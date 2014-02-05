@@ -1,0 +1,6 @@
+[Core]
+Name = Duck
+Module = duck
+
+[Documentation]
+Description = Rubber duck debugging at it's best

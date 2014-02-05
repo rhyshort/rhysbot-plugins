@@ -1,0 +1,6 @@
+[Core]
+Name = Doge
+Module = doge
+
+[Documentation]
+Description = Make a doge

@@ -1,0 +1,6 @@
+[Core]
+Name = FreshPots
+Module = pots
+
+[Documentation]
+Description = let's say hello !
