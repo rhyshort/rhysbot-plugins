@@ -1,0 +1,6 @@
+[Core]
+Name = Http
+Module = http
+
+[Documentation]
+Description = Look up http return codes
