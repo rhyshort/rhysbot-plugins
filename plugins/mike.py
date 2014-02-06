@@ -15,7 +15,7 @@ class Mike(BotPlugin):
                 )
                 if mess.getBody().find('mikewallace') != -1 and s == -1:
                     self.count += 1
-                    if self.count > 1:
+                    if self.count > 1 and randint(1, 5) == 1:
                         for i in xrange(randint(3, 15)):
                             self.send(
                                 mess.getFrom(),
