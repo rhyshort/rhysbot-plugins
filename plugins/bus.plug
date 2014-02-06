@@ -1,0 +1,6 @@
+[Core]
+Name = Bus
+Module = bus
+
+[Documentation]
+Description = let's say hello !
