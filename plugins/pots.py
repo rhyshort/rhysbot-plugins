@@ -1,6 +1,7 @@
 from errbot import BotPlugin
 from random import choice
 from apscheduler.scheduler import Scheduler
+from datetime import datetime, timedelta
 import logging
 
 
@@ -23,19 +24,19 @@ class FreshPots(BotPlugin):
 
     def activate(self):
         super(FreshPots, self).activate()
-        sched = Scheduler(coalesce=True)
-        sched.start()
-        sched.add_cron_job(
+        self.sched = Scheduler(coalesce=True)
+        self.sched.start()
+        self.sched.add_cron_job(
             self.fresh_pots,
             kwargs={'message': 'fresh pots time'},
             day_of_week='mon-fri',
             hour=11)
-        sched.add_cron_job(
+        self.sched.add_cron_job(
             self.fresh_pots,
             kwargs={'message': 'fresh pots time'},
             day_of_week='mon-fri',
             hour=15)
-        logging.info(sched.get_jobs())
+        logging.info(self.sched.get_jobs())
 
     def callback_message(self, conn, mess):
         body = mess.getBody().lower()
@@ -43,15 +44,23 @@ class FreshPots(BotPlugin):
             self.fresh_pots(mess.getFrom())
 
     def fresh_pots(self, channel='#cloudant-bristol', message=None):
-            if message:
-                self.send(
-                    channel,
-                    message,
-                    message_type='groupchat'
-                )
-
+        if message:
             self.send(
                 channel,
-                choice(self.pots),
+                message,
                 message_type='groupchat'
             )
+
+        self.send(
+            channel,
+            choice(self.pots),
+            message_type='groupchat'
+        )
+        self.check()
+
+    def check(self):
+        for job in self.sched:
+            delta = job.next_run_time - datetime.now()
+            hour_delta = timedelta(seconds=3600)
+            if delta < hour_delta:
+                job.compute_next_run_time(datetime.now() + hour_delta)
