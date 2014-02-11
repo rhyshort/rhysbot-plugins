@@ -33,5 +33,7 @@ class Doge(BotPlugin):
         if key:
             imgur = Imgur(key)
             words = '/'.join(words)
-            doge = imgur.upload_image(url="http://dogr.io/%s/wow.png" % words)
-            return doge.link
+            try:
+                doge = imgur.upload_image(url="http://dogr.io/%s/wow.png" % words)
+                return doge.link
+            return "No upload, so unfulfil, much sad, very broken, wow"
