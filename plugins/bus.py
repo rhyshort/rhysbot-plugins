@@ -30,7 +30,7 @@ class Bus(BotPlugin):
         argsLength = len(mylist)
         if argsLength < 2 :
             route = 48
-        else
+        else :
             route = args[1]
         now = arrow.now()
         t = self.next_bus(*args)
