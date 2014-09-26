@@ -3,4 +3,4 @@ Name = Bus
 Module = bus
 
 [Documentation]
-Description = let's say hello !
+Description = Get the next bus at a pre determined stop. !bus <stop> <route> <time> route and time are optional
