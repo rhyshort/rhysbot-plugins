@@ -26,11 +26,17 @@ class Bus(BotPlugin):
 
     @botcmd(split_args_with=' ')
     def bus(self, mess, args):
+        
+        argsLength = len(mylist)
+        if argsLength < 2 :
+            route = 48
+        else
+            route = args[1]
         now = arrow.now()
         t = self.next_bus(*args)
         if t:
             return 'The next no. %s bus leaves from %s %s' % (
-                args[1],
+                route,
                 args[0],
                 t.humanize(now)
             )
