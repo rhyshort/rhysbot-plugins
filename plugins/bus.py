@@ -81,7 +81,7 @@ class Bus(BotPlugin):
         times = bus_stops[0].findAll('p', {'class': 'Stops'})
         return times
 
-    def next_bus(self, stop, route, time=0):
+    def next_bus(self, stop, route=49, time=0):
         times = self.parse_timetable(stop, route)
         now = arrow.now()
         then = now.replace(minutes=+int(time))
