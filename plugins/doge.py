@@ -36,4 +36,5 @@ class Doge(BotPlugin):
             try:
                 doge = imgur.upload_image(url="http://dogr.io/%s/wow.png" % words)
                 return doge.link
-            return "No upload, so unfulfil, much sad, very broken, wow"
+            except:
+                return "No upload, so unfulfil, much sad, very broken, wow"
