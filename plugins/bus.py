@@ -12,7 +12,9 @@ STOPS = {
     'xmassteps': 'bstgajt',
     'centre': 'bstgajp',
     'hippodrome': 'bstdwmd',
-    'kennave': 'bstjawt'
+    'kennave': 'bstjawt',
+    'peache': 'sglgdgd',
+    'rupert' : 'bstpaga'
 }
 
 
