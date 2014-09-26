@@ -27,7 +27,7 @@ class Bus(BotPlugin):
     @botcmd(split_args_with=' ')
     def bus(self, mess, args):
         
-        argsLength = len(mylist)
+        argsLength = len(args)
         if argsLength < 2 :
             route = 48
         else :
