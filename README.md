@@ -1,4 +1,4 @@
-mybot
+rhysbot-plugins
 =====
 
 An IRC bot for my own nefarious ends
