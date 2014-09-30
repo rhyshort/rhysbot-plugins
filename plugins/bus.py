@@ -29,7 +29,7 @@ class Bus(BotPlugin):
         
         argsLength = len(args)
         if argsLength < 2 :
-            route = 48
+            route = 49
         else :
             route = args[1]
         now = arrow.now()
