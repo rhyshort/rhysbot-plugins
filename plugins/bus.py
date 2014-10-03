@@ -84,7 +84,7 @@ class Bus(BotPlugin):
 
         soup = BeautifulSoup(res.text)
         bus_stops = soup.findAll('table', {'class': 'BusStops'})
-        times = bus_stops[0].findAll('p', {'class': 'Stops'}) //should loop instead of return one
+        times = bus_stops[0].findAll('p', {'class': 'Stops'}) #should loop instead of return one
         return times
 
     def next_bus(self, stop, route=49, time=0):
