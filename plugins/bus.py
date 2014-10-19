@@ -33,13 +33,17 @@ class Bus(BotPlugin):
         else :
             route = args[1]
         now = arrow.now()
-        t = self.next_bus(*args)
+        t = self.next_buses(*args)
+        buses = []
         if t:
-            return 'The next no. %s bus leaves from %s %s' % (
+            for bus in t:
+                busess.append( 'The next no. %s bus leaves from %s %s' % (
                 route,
                 args[0],
-                t.humanize(now)
-            )
+                t.humanize(now) 
+                )
+                )
+        return buses;
 
     @botcmd(split_args_with=' ')
     def bus_remind(self, mess, args):
@@ -91,6 +95,7 @@ class Bus(BotPlugin):
         times = self.parse_timetable(stop, route)
         now = arrow.now()
         then = now.replace(minutes=+int(time))
+        nextbuses = []
 
         for i in times:
             logging.info(i.text)
@@ -105,3 +110,29 @@ class Bus(BotPlugin):
             if next > then:
                 return next
         return False
+
+    def next_buses(self,stop, route=49,time=0)
+        times = self.parse_timetable(stop,route)
+        now = arrow.now()
+
+        then = now.replace(minutes=+int(time))
+
+        buses = []
+
+        for i in times:
+            logging.info(i.text)
+            if 'DUE' in i.text:
+                continue
+            elif ';at ' in i.text:
+                t = i.text.split('at ')[-1].strip().split(':')
+                next = now.replace(hour=int(t[0]), minute=int(t[1]))
+                buses.append(next)
+            else:
+                t = i.text.split('in ')[-1].strip().split()
+                next = now.replace(minutes=int(t[0]))
+                buses.append(next)
+               
+        if len(buses) != 0:
+            return buses; 
+        return False
+
