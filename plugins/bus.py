@@ -111,7 +111,7 @@ class Bus(BotPlugin):
                 return next
         return False
 
-    def next_buses(self,stop, route=49,time=0)
+    def next_buses(self,stop, route=49,time=0):
         times = self.parse_timetable(stop,route)
         now = arrow.now()
 
