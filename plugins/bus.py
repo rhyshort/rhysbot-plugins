@@ -125,8 +125,9 @@ class Bus(BotPlugin):
                 continue
             elif ';at ' in i.text:
                 t = i.text.split('at ')[-1].strip().split(':')
-                next = now.replace(hour=int(t[0]), minute=int(t[1]))
-                buses.append(next)
+                if '(' not in t:
+                    next = now.replace(hour=int(t[0]), minute=int(t[1]))
+                    buses.append(next)
             else:
                 t = i.text.split('in ')[-1].strip().split()
                 next = now.replace(minutes=int(t[0]))
