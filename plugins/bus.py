@@ -40,7 +40,7 @@ class Bus(BotPlugin):
                 buses.append( 'The next no. %s bus leaves from %s %s' % (
                 route,
                 args[0],
-                t.humanize(now) 
+                bus.humanize(now) 
                 )
                 )
         return buses;
