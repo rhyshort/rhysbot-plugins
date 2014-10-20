@@ -47,11 +47,6 @@ class Bus(BotPlugin):
         for s in buses:
             yield s
 
-        if s :
-            return True
-        else :
-            return False
-
     @botcmd(split_args_with=' ')
     def bus_remind(self, mess, args):
         t = self.next_bus(*args)
