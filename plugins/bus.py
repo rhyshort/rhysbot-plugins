@@ -37,7 +37,7 @@ class Bus(BotPlugin):
         buses = []
         if t:
             for bus in t:
-                busess.append( 'The next no. %s bus leaves from %s %s' % (
+                buses.append( 'The next no. %s bus leaves from %s %s' % (
                 route,
                 args[0],
                 t.humanize(now) 
