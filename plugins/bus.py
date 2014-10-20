@@ -43,7 +43,14 @@ class Bus(BotPlugin):
                 bus.humanize(now) 
                 )
                 )
-        return buses;
+
+        for s in buses:
+            yield s
+
+        if s :
+            return True
+        else :
+            return False
 
     @botcmd(split_args_with=' ')
     def bus_remind(self, mess, args):
