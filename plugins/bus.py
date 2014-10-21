@@ -37,7 +37,7 @@ class Bus(BotPlugin):
         buses = []
         if t:
             for bus in t:
-                buses.append( 'The next no. %s bus leaves from %s %s' % (
+                buses.append( 'No. %s bus leaves from %s %s' % (
                 route,
                 args[0],
                 bus.humanize(now) 
@@ -106,9 +106,11 @@ class Bus(BotPlugin):
             elif ';at ' in i.text:
                 t = i.text.split('at ')[-1].strip().split(':')
                 next = now.replace(hour=int(t[0]), minute=int(t[1]))
+                logging.info(next)
             else:
                 t = i.text.split('in ')[-1].strip().split()
                 next = now.replace(minutes=int(t[0]))
+                logging.info(next)
             if next > then:
                 return next
         return False
@@ -130,10 +132,12 @@ class Bus(BotPlugin):
                 if t[1].find('(') == -1:
                     next = now.replace(hour=int(t[0]), minute=int(t[1]))
                     buses.append(next)
+                    logging.info(next)
             else:
                 t = i.text.split('in ')[-1].strip().split()
                 next = now.replace(minutes=int(t[0]))
                 buses.append(next)
+                logging.info(next)
                
         if len(buses) != 0:
             return buses; 
