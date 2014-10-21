@@ -132,7 +132,7 @@ class Bus(BotPlugin):
                 if t[1].find('(') == -1:
                     next = now.replace(hour=int(t[0]), minute=int(t[1]))
                     buses.append(next)
-                    logging.info("Next bus parsed is "+next)
+                    logging.info("Next bus parsed is %s" % next)
             else:
                 t = i.text.split('in ')[-1].strip().split()
                 next = now.replace(minutes=int(t[0]))
