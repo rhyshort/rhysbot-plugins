@@ -130,6 +130,7 @@ class Bus(BotPlugin):
             elif ';at ' in i.text:
                 t = i.text.split('at ')[-1].strip().split(':')
                 if t[1].find('(') == -1:
+                    logging.info("replacing hour with % and minute with %" % (t[0], t[1])
                     next = now.replace(hour=int(t[0]), minute=int(t[1]))
                     buses.append(next)
                     logging.info("Next bus parsed is %s" % next)
